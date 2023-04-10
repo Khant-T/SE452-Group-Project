@@ -5,6 +5,6 @@ The purpose of the tool is to aid users in tracking one or more projects by task
 ## Signature
 
 - Tayza, Khant
--
+- Lin, Xuwei
 -
 
