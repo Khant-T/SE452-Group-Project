@@ -6,5 +6,5 @@ The purpose of the tool is to aid users in tracking one or more projects by task
 
 - Tayza, Khant
 - Lin, Xuwei
--
+- Addala, Satya Yoganand
 
