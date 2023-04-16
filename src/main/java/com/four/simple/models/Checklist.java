@@ -1,5 +1,6 @@
 package com.four.simple.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,9 @@ public class Checklist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String name;
-    private long workspace;
+
+    @Column(name = "workspace_id")
+    private long workspaceId;
 }

@@ -20,6 +20,6 @@ public class Workspace {
 
     private String name;
 
-    @Column(nullable = true)
-    private long owner;
+    @Column(name = "user_id", nullable = true)
+    private long userId;
 }

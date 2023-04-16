@@ -1,5 +1,6 @@
 package com.four.simple.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,9 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String description;
-    private long list;
+
+    @Column(name = "list_id")
+    private long listId;
 }

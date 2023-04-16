@@ -1,5 +1,6 @@
 package com.four.simple.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,11 @@ public class Subtask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String description;
-    private long task;
+
+    @Column(name = "task_id")
+    private long taskId;
+    
     private int completed;
 }
