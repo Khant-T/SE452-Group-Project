@@ -19,8 +19,8 @@ public class Task {
     private String description;
 
     @Column(name = "list_id")
-    private long list;
+    private long listId;
 
     @Column(name = "status_id")
-    private long status;
+    private long statusId;
 }

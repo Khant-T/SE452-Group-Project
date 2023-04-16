@@ -29,7 +29,8 @@ INSERT INTO tasks (id, description, list_id, status_id)
         (3, 'Set-up a Snapchat account', 1, 3),
         (4, 'Revamping our style guidelilnes', 2, 5),
         (5, 'Sponsor social influencers', 2, 4),
-        (6, 'Set-up ad campaigns', 2, 5);
+        (6, 'Rent a billboard and make start making art pieces for it', 2, 4),
+        (7, 'Set-up ad campaigns', 2, 5);
 
 
 -- Subtasks

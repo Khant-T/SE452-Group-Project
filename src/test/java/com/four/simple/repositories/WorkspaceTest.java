@@ -12,7 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.four.simple.models.Workspace;
 
 /*
- * Test CREATE, READ, UPDATE, and DELETE  
+ * Test WorkspaceRepository:
+ * 
+ *  - CREATE
+ *  - READ
+ *  - UPDATE
+ *  - DELETE  
  */
 
 @SpringBootTest
