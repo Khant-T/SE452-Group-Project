@@ -1,15 +1,16 @@
 -- Pre-populate the database tables
 
 -- Workspaces
-INSERT INTO workspaces (id, name)
+INSERT INTO workspaces (id, name, user_id)
     VALUES
-        (1, 'Marketing Space');
+        (100, 'Marketing Space', 0),
+        (115, 'Another Space', 0);
 
 -- Lists
 INSERT INTO lists (id, name, workspace_id)
     VALUES
-        (1, 'Marketing To-dos', 1),
-        (2, 'Ideas for Marketing Projects', 1);
+        (1, 'Marketing To-dos', 100),
+        (2, 'Ideas for Marketing Projects', 100);
 
 -- Statuses
 INSERT INTO statuses (id, description, list_id)
