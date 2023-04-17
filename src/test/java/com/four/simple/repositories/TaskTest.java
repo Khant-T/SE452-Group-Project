@@ -70,5 +70,18 @@ public class TaskTest {
         List<Task> tasksL2 = taskRepo.findByListId(200L);
         assertEquals(4, tasksL2.size());
     }
+
+    @Test
+    public void testFindByStatusId()
+    {
+        List<Task> tasksS3 = taskRepo.findByStatusId(3L);
+        assertEquals(1, tasksS3.size());
+
+        List<Task> tasksS4 = taskRepo.findByStatusId(4L);
+        assertEquals(2, tasksS4.size());
+
+        List<Task> tasksS5 = taskRepo.findByStatusId(5L);
+        assertEquals(2, tasksS5.size());
+    }
 }
 
