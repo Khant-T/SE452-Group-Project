@@ -11,7 +11,7 @@ import com.four.simple.models.Workspace;
 import com.four.simple.repositories.WorkspaceRepository;
 
 @RestController
-@RequestMapping("workspace")
+@RequestMapping("workspaces")
 public class WorkspaceController {
 
 
