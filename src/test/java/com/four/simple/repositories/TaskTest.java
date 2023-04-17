@@ -27,8 +27,7 @@ public class TaskTest {
     private TaskRepository taskRepo;
 
     @Test
-    public void testCRUD()
-    {
+    public void testCRUD() {
         long count = taskRepo.count();
 
         // test CREATE
@@ -62,8 +61,7 @@ public class TaskTest {
     }
 
     @Test
-    public void testFindByListId()
-    {
+    public void testFindByListId() {
         List<Task> tasksL1 = taskRepo.findByListId(100L);
         assertEquals(3, tasksL1.size());
 
@@ -72,8 +70,7 @@ public class TaskTest {
     }
 
     @Test
-    public void testFindByStatusId()
-    {
+    public void testFindByStatusId() {
         List<Task> tasksS3 = taskRepo.findByStatusId(3L);
         assertEquals(1, tasksS3.size());
 
@@ -82,6 +79,26 @@ public class TaskTest {
 
         List<Task> tasksS5 = taskRepo.findByStatusId(5L);
         assertEquals(2, tasksS5.size());
-    }
-}
 
+    }
+
+    @Test
+    public void testUpdated() {
+       // test CREATE
+       Task task = new Task();
+       task.setDescription("TestUpdated Task");
+       task.setId(101L);
+       task.setListId(1L);
+       task.setStatusId(1L);
+       taskRepo.save(task);
+
+       // test UPDATE
+       task = taskRepo.findById(101L).get();
+       task.setDescription("After Updated Testing Task");
+       taskRepo.save(task);
+       Task updated = taskRepo.findById(101L).get();
+       assertEquals("After Updated Testing Task", updated.getDescription());
+
+    }
+
+}

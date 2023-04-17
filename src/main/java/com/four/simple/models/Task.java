@@ -23,4 +23,8 @@ public class Task {
 
     @Column(name = "status_id")
     private long statusId;
+
+    public Integer size() {
+        return null;
+    }
 }
