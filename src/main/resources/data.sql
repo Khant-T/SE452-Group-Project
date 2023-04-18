@@ -4,7 +4,9 @@
 INSERT INTO workspaces (id, name, user_id)
     VALUES
         (100, 'Marketing Space', 0),
-        (115, 'Another Space', 0);
+        (115, 'Another Space', 0),
+        (120, 'Art Space', 1),
+        (125, 'English Space', 2);
 
 -- Lists
 INSERT INTO lists (id, name, workspace_id)
@@ -30,7 +32,9 @@ INSERT INTO tasks (id, description, list_id, status_id)
         (201, 'Revamping our style guidelilnes', 200, 5),
         (202, 'Sponsor social influencers', 200, 4),
         (203, 'Rent a billboard and make start making art pieces for it', 200, 4),
-        (204, 'Set-up ad campaigns', 200, 5);
+        (204, 'Set-up ad campaigns', 200, 5),
+        (205, '100% coverage on Unit test', 300, 2),
+        (206, 'Complete execise on UI Interface', 300, 2);
 
 
 -- Subtasks

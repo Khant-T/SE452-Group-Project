@@ -3,8 +3,6 @@ package com.four.simple.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -58,19 +56,46 @@ public class WorkspaceTest {
         assertEquals(false, workspaceRepo.existsById(115L));
     }
 
-    // @Test
-    // public void testFindWorkSpaceWUid(){
-    //     Long count = workspaceRepo.count();
+    /*
+     * Find work space with user's id.
+     */
+    @Test
+    public void testFindWorkSpaceWUid(){
+        assertEquals(3, workspaceRepo.findByUserId(0L).size());
+    }
 
-    //     Workspace workspaceB = new Workspace(200L, "Workspace B", 0L);
-    //     Workspace workspaceC = new Workspace(300L, "Workspace C", 0L);
-    //     workspaceRepo.saveAll(List.of(workspaceB, workspaceC));
+    /* Find Workspace with its Workspace ID 100L. */
+    @Test
+    public void testFindWorkspaceId(){
+        Workspace ws100=workspaceRepo.findById(100L);
+        assertEquals("Marketing Space",ws100.getName());
+    }
 
-    //     /*
-    //      * We have 4 datat in Repo, after delete 115L 
-    //      * the size suppose to be 3, but we got 5 after.
-    //      */
-    //     assertEquals(5, workspaceRepo.findByUserId(0L).size());
-    // }
+
+    /* Updated a new work space name with ID 100L */
+    @Test
+    public void testUpdateSpace(){
+
+        Workspace ws600=workspaceRepo.findById(115L);
+        ws600.setName("Computer Science");
+        workspaceRepo.save(ws600);
+
+        assertEquals("Computer Science",workspaceRepo.findById(115L).getName());
+    }
+
+    /* Deleted Entired Work space */
+    @Test
+    public void testDeleteWorkspace(){
+        Workspace ws=workspaceRepo.findById(120L);
+        workspaceRepo.delete(ws);
+        assertEquals(false,workspaceRepo.existsById(120L));
+    }
+
+    /* Deleted work space by space id */
+    @Test
+    public void testDeleteWSbyID(){
+        workspaceRepo.deleteById(125L);
+        assertEquals(false,workspaceRepo.existsById(125L));
+    }
 }
 

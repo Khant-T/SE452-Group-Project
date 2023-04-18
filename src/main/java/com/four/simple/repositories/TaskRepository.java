@@ -13,6 +13,8 @@ import com.four.simple.models.Task;
 public interface TaskRepository
     extends JpaRepository<Task, Long>
 {
+    Task findById(long id);
+    
     List<Task> findByListId(long listId);
 
     List<Task> findByStatusId(long statusId);
@@ -23,7 +25,7 @@ public interface TaskRepository
 
     void deleteById(long listId);
 
-    void existsById(long listId);
+    boolean existsById(long listId);
     
 }
  

@@ -41,25 +41,27 @@ public class TaskTest {
         assertEquals(count + 1, taskRepo.count());
 
         // test READ
-        task = taskRepo.findById(101L).get();
+        task = taskRepo.findById(101L);
         assertEquals(true, task != null);
         assertEquals(101L, task.getId());
         assertEquals("Schedule an appointment with S Supermarket", task.getDescription());
 
         // test UPDATE
-        task = taskRepo.findById(1L).get();
+        task = taskRepo.findById(1L);
         task.setDescription("Testing Task");
         taskRepo.save(task);
 
-        Task updated = taskRepo.findById(1L).get();
+        Task updated = taskRepo.findById(1L);
         assertEquals("Testing Task", updated.getDescription());
 
         // test DELETE
         taskRepo.deleteById(1L);
-        Optional<Task> deleted = taskRepo.findById(1L);
-        assertEquals(false, deleted.isPresent());
+        Task deleted = taskRepo.findById(1L);
+        assertEquals(false, taskRepo.existsById(1L));
     }
 
+
+    /* Find by list id */
     @Test
     public void testFindByListId() {
         List<Task> tasksL1 = taskRepo.findByListId(100L);
@@ -69,6 +71,7 @@ public class TaskTest {
         assertEquals(4, tasksL2.size());
     }
 
+    /* Testing with find task with status id */
     @Test
     public void testFindByStatusId() {
         List<Task> tasksS3 = taskRepo.findByStatusId(3L);
@@ -82,6 +85,7 @@ public class TaskTest {
 
     }
 
+    /* Test Updaing existing task */
     @Test
     public void testUpdated() {
        // test CREATE
@@ -93,12 +97,32 @@ public class TaskTest {
        taskRepo.save(task);
 
        // test UPDATE
-       task = taskRepo.findById(101L).get();
+       task = taskRepo.findById(101L);
        task.setDescription("After Updated Testing Task");
        taskRepo.save(task);
-       Task updated = taskRepo.findById(101L).get();
+       Task updated = taskRepo.findById(101L);
        assertEquals("After Updated Testing Task", updated.getDescription());
 
     }
 
+    /* Test Delete task */
+    @Test
+    public void testDeleteTask(){
+        Task t1=taskRepo.findById(205L);
+        taskRepo.delete(t1);
+        assertEquals(false, taskRepo.existsById(205L));
+    }
+
+    /* Test Delete taks by using id */
+    @Test
+    public void testDeleteTaskById(){
+        taskRepo.deleteById(206L);
+        assertEquals(false,taskRepo.existsById(206L));
+    }
+
+    /* Test exisiting list id */
+    @Test
+    public void testExistId(){
+        assertEquals(false, taskRepo.existsById(104L));
+    }
 }

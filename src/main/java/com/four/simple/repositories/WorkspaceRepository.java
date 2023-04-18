@@ -25,6 +25,5 @@ public interface WorkspaceRepository
 
     boolean existsById(long id);
 
-
     
 }
