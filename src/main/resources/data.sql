@@ -12,16 +12,19 @@ INSERT INTO workspaces (id, name, user_id)
 INSERT INTO lists (id, name, workspace_id)
     VALUES
         (100, 'Marketing To-dos', 100),
-        (200, 'Ideas for Marketing Projects', 100);
+        (200, 'Ideas for Marketing Projects', 100),
+        (300, 'Simple App To-dos', 200),
+        (400, 'Write Junit test case', 200),
+        (500, 'Depoly on Heroku', 300);
 
 -- Statuses
 INSERT INTO statuses (id, description, list_id)
     VALUES
-        (1, 'To-do', 1),
-        (2, 'In progress', 1),
-        (3, 'Complete', 1),
-        (4, 'To-Be-Determined (TBD)', 2),
-        (5, 'Confirmed Projects', 2);
+        (100, 'To-do', 1),
+        (200, 'In progress', 1),
+        (300, 'Complete', 1),
+        (400, 'To-Be-Determined (TBD)', 2),
+        (500, 'Confirmed Projects', 2);
 
 -- Tasks
 INSERT INTO tasks (id, description, list_id, status_id)
@@ -40,8 +43,8 @@ INSERT INTO tasks (id, description, list_id, status_id)
 -- Subtasks
 INSERT INTO subtasks (id, description, task_id, completed)
     VALUES
-        (1, 'Reach out to marketing team of S Supermarket', 1, 0),
-        (2, 'Confirm the date and time of appointment', 1, 0),
-        (3, 'Day 1. Brand Strategy by Dr. A', 3, 1),
-        (4, 'Day 2. Competitive Positioning by Miss I', 3, 1),
-        (5, 'Day 3. Corporate Identity & Creative Development by Mr. O', 3, 0);
+        (100, 'Reach out to marketing team of S Supermarket', 1, 0),
+        (200, 'Confirm the date and time of appointment', 1, 0),
+        (300, 'Day 1. Brand Strategy by Dr. A', 3, 1),
+        (400, 'Day 2. Competitive Positioning by Miss I', 3, 1),
+        (500, 'Day 3. Corporate Identity & Creative Development by Mr. O', 3, 0);
