@@ -5,8 +5,8 @@ INSERT INTO workspaces (id, name, user_id)
     VALUES
         (100, 'Marketing Space', 0),
         (115, 'Another Space', 0),
-        (120, 'Art Space', 1),
-        (125, 'English Space', 2);
+        (120, 'Art Space', 0),
+        (125, 'English Space', 0);
 
 -- Lists
 INSERT INTO lists (id, name, workspace_id)
@@ -20,11 +20,11 @@ INSERT INTO lists (id, name, workspace_id)
 -- Statuses
 INSERT INTO statuses (id, description, list_id)
     VALUES
-        (100, 'To-do', 1),
-        (200, 'In progress', 1),
-        (300, 'Complete', 1),
-        (400, 'To-Be-Determined (TBD)', 2),
-        (500, 'Confirmed Projects', 2);
+        (100, 'To-do', 100),
+        (200, 'In progress', 100),
+        (300, 'Complete', 100),
+        (400, 'To-Be-Determined (TBD)', 200),
+        (500, 'Confirmed Projects', 200);
 
 -- Tasks
 INSERT INTO tasks (id, description, list_id, status_id)

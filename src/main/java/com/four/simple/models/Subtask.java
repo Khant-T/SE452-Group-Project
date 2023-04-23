@@ -19,10 +19,10 @@ public class Subtask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id", nullable = false,unique = true)
+    @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name="description", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "task_id",nullable = false)
