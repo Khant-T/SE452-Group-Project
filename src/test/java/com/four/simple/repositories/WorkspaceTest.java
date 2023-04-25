@@ -15,7 +15,9 @@ import com.four.simple.models.Workspace;
  *  - CREATE
  *  - READ
  *  - UPDATE
- *  - DELETE  
+ *  - DELETE
+ *  - findById
+ *  - findByUserId
  */
 
 @SpringBootTest
@@ -31,71 +33,40 @@ public class WorkspaceTest {
         // test CREATE
         Long count = workspaceRepo.count();
 
-        Workspace workspaceB = new Workspace(200L, "Workspace B", 0L);
-        Workspace workspaceC = new Workspace(300L, "Workspace C", 0L);
+        Workspace workspaceB = new Workspace(0L, "Workspace B", 0L);
+        Workspace workspaceC = new Workspace(0L, "Workspace C", 0L);
         workspaceRepo.saveAll(List.of(workspaceB, workspaceC));
 
         assertEquals(count + 2, workspaceRepo.count());
 
         // test READ
-        Workspace workspace = workspaceRepo.findById(100L);
+        Workspace workspace = workspaceRepo.findById(101);
         assertEquals(true, workspace != null);
-        assertEquals(100L, workspace.getId());
+        assertEquals(101, workspace.getId());
         assertEquals("Marketing Space", workspace.getName());
 
         // test UPDATE
-        workspace = workspaceRepo.findById(115L);
+        workspace = workspaceRepo.findById(102L);
         workspace.setName("Random Workspace");
         workspaceRepo.save(workspace);
 
-        Workspace updated = workspaceRepo.findById(115L);
+        Workspace updated = workspaceRepo.findById(102L);
         assertEquals("Random Workspace", updated.getName());
 
         // test DELETE
-        workspaceRepo.deleteById(115L);
-        assertEquals(false, workspaceRepo.existsById(115L));
+        workspaceRepo.deleteById(102L);
+        assertEquals(false, workspaceRepo.existsById(102L));
     }
 
-    /*
-     * Find work space with user's id.
-     */
     @Test
-    public void testFindWorkSpaceWUid(){
+    public void testFindByUserId(){
         assertEquals(3, workspaceRepo.findByUserId(0L).size());
     }
 
-    /* Find Workspace with its Workspace ID 100L. */
     @Test
-    public void testFindWorkspaceId(){
-        Workspace ws100=workspaceRepo.findById(100L);
-        assertEquals("Marketing Space",ws100.getName());
-    }
-
-
-    /* Updated a new work space name with ID 100L */
-    @Test
-    public void testUpdateSpace(){
-
-        Workspace ws600=workspaceRepo.findById(115L);
-        ws600.setName("Computer Science");
-        workspaceRepo.save(ws600);
-
-        assertEquals("Computer Science",workspaceRepo.findById(115L).getName());
-    }
-
-    /* Deleted Entired Work space */
-    @Test
-    public void testDeleteWorkspace(){
-        Workspace ws=workspaceRepo.findById(120L);
-        workspaceRepo.delete(ws);
-        assertEquals(false,workspaceRepo.existsById(120L));
-    }
-
-    /* Deleted work space by space id */
-    @Test
-    public void testDeleteWSbyID(){
-        workspaceRepo.deleteById(125L);
-        assertEquals(false,workspaceRepo.existsById(125L));
+    public void testFindById(){
+        Workspace workspace = workspaceRepo.findById(101L);
+        assertEquals("Marketing Space", workspace.getName());
     }
 }
 

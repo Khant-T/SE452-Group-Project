@@ -15,16 +15,5 @@ public interface SubtaskRepository
 
     List<Subtask> findByTaskId(long task_id);
 
-    Subtask save(Subtask subtask);
-
-    void delete(Subtask subtask);
-
-    void deleteById(long id);
-
-    boolean existsById(long id);
-
     boolean existsByTaskId(long task_id);
-
-    
-
 }

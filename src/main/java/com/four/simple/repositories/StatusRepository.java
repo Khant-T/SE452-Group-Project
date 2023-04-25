@@ -14,14 +14,6 @@ public interface StatusRepository
     Status findById(long id);
 
     List<Status> findByListId(long list_id);
-    
-    Status save(Status status);
-
-    void delete(Status status);
-
-    void deleteById(long id);
-
-    boolean existsById(long id);
 
     boolean existsByListId(long list_id);
 

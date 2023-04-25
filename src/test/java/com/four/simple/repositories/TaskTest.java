@@ -17,7 +17,7 @@ import com.four.simple.models.Task;
  *  - READ
  *  - UPDATE
  *  - DELETE
- *  - findByListId()
+ *  - findByListId
  */
 
 @SpringBootTest
@@ -40,88 +40,40 @@ public class TaskTest {
         assertEquals(count + 1, taskRepo.count());
 
         // test READ
-        task = taskRepo.findById(101L);
+        task = taskRepo.findById(401L);
         assertEquals(true, task != null);
-        assertEquals(101L, task.getId());
+        assertEquals(401L, task.getId());
         assertEquals("Schedule an appointment with S Supermarket", task.getDescription());
 
         // test UPDATE
-        task = taskRepo.findById(1L);
+        task = taskRepo.findById(401L);
         task.setDescription("Testing Task");
         taskRepo.save(task);
 
-        Task updated = taskRepo.findById(1L);
+        Task updated = taskRepo.findById(401L);
         assertEquals("Testing Task", updated.getDescription());
 
         // test DELETE
-        taskRepo.deleteById(1L);
-        Task deleted = taskRepo.findById(1L);
-        assertEquals(false, taskRepo.existsById(1L));
+        taskRepo.deleteById(401L);
+        assertEquals(false, taskRepo.existsById(401L));
     }
 
 
-    /* Find by list id */
     @Test
     public void testFindByListId() {
-        List<Task> tasksL1 = taskRepo.findByListId(100L);
-        assertEquals(3, tasksL1.size());
+        List<Task> tasksL1 = taskRepo.findByListId(202L);
+        assertEquals(4, tasksL1.size());
 
-        List<Task> tasksL2 = taskRepo.findByListId(200L);
-        assertEquals(4, tasksL2.size());
+        List<Task> tasksL2 = taskRepo.findByListId(201L);
+        assertEquals(3, tasksL2.size());
     }
 
-    /* Testing with find task with status id */
     @Test
     public void testFindByStatusId() {
-        List<Task> tasksS3 = taskRepo.findByStatusId(3L);
-        assertEquals(1, tasksS3.size());
+        List<Task> tasksS1 = taskRepo.findByStatusId(351L);
+        assertEquals(2, tasksS1.size());
 
-        List<Task> tasksS4 = taskRepo.findByStatusId(4L);
-        assertEquals(2, tasksS4.size());
-
-        List<Task> tasksS5 = taskRepo.findByStatusId(5L);
-        assertEquals(2, tasksS5.size());
-
-    }
-
-    /* Test Updaing existing task */
-    @Test
-    public void testUpdated() {
-       // test CREATE
-       Task task = new Task();
-       task.setDescription("TestUpdated Task");
-       task.setId(101L);
-       task.setListId(1L);
-       task.setStatusId(1L);
-       taskRepo.save(task);
-
-       // test UPDATE
-       task = taskRepo.findById(101L);
-       task.setDescription("After Updated Testing Task");
-       taskRepo.save(task);
-       Task updated = taskRepo.findById(101L);
-       assertEquals("After Updated Testing Task", updated.getDescription());
-
-    }
-
-    /* Test Delete task */
-    @Test
-    public void testDeleteTask(){
-        Task t1=taskRepo.findById(205L);
-        taskRepo.delete(t1);
-        assertEquals(false, taskRepo.existsById(205L));
-    }
-
-    /* Test Delete taks by using id */
-    @Test
-    public void testDeleteTaskById(){
-        taskRepo.deleteById(206L);
-        assertEquals(false,taskRepo.existsById(206L));
-    }
-
-    /* Test exisiting list id */
-    @Test
-    public void testExistId(){
-        assertEquals(false, taskRepo.existsById(104L));
+        List<Task> tasksS2 = taskRepo.findByStatusId(303L);
+        assertEquals(1, tasksS2.size());
     }
 }

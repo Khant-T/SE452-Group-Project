@@ -15,14 +15,6 @@ public interface ChecklistRepository
 
     List<Checklist> findByWorkspaceId(long workspace_id);
 
-    Checklist save(Checklist checklist);
-
-    void delete(Checklist checklist);
-
-    void deleteById(long id);
-
-    boolean existsById(long id);
-
     boolean existsByWorkspaceId(long workspace_id);
 
 }

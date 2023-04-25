@@ -18,14 +18,5 @@ public interface TaskRepository
     List<Task> findByListId(long listId);
 
     List<Task> findByStatusId(long statusId);
-
-    Task save(Task task);
-
-    void delete(Task task);
-
-    void deleteById(long listId);
-
-    boolean existsById(long listId);
-    
 }
  

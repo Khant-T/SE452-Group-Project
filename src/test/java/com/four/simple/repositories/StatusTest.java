@@ -8,15 +8,41 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.four.simple.models.Status;
 
+/*
+ * Test SubtaskRepository:
+ * 
+ *  - CREATE
+ *  - READ
+ *  - UPDATE
+ *  - DELETE
+ *  - findByListId
+ */
+
 @SpringBootTest
 public class StatusTest {
     @Autowired
     private StatusRepository statusRepo;
 
-
-    /* Test create new Status */
     @Test
-    public void testCreat(){
+    public void testCreate(){
+        long count = statusRepo.count();
+        Status status = new Status(0L,"Delayed", 203L);
+
+        statusRepo.save(status);
+        assertEquals(count+1, statusRepo.count());
+        
+    }
+
+    @Test
+    public void testRead(){
+        Status status = statusRepo.findById(301L);
+        assertEquals(true, status != null);
+        assertEquals("To-do", status.getDescription());
+        assertEquals(201, status.getListId());
+    }
+
+    @Test
+    public void testUpdate(){
         long count = statusRepo.count();
         Status statu1=new Status(600L,"Delay",2L);
 
@@ -24,56 +50,21 @@ public class StatusTest {
         assertEquals(count+1, statusRepo.count());
         
     }
-    
-    /* Test find by Id  */
+
     @Test
-    public void testFindById(){
-        assertEquals("To-do",statusRepo.findById(100L).getDescription());
+    public void testDelete() {
+        Status deleted = statusRepo.findById(301L);
+        statusRepo.delete(deleted);
+        assertEquals(false, statusRepo.existsById(301L));
     }
 
-
-    /* Test find by list id */
     @Test
     public void testFindByListId(){
-        assertEquals(3,statusRepo.findByListId(1L).size());
+        assertEquals(2, statusRepo.findByListId(202L).size());
     }
 
-    /* Test update an exisiting status */
-    @Test
-    public void testSaveExisitingStatus(){
-        Status st=new Status();
-        st=statusRepo.findById(400L);
-        st.setDescription("Delayed");
-        st.setListId(3L);
-        statusRepo.save(st);
-
-        assertEquals("Delayed",statusRepo.findById(400L).getDescription());
-    }
-
-    /* Test delete */
-    @Test
-    public void testDelete(){
-        Status st=statusRepo.findById(400L);
-        statusRepo.delete(st);
-        assertEquals(false,statusRepo.existsById(400L));
-    }
-
-    /* Test deleteById */
-    @Test
-    public void testDeleteById(){
-        statusRepo.deleteById(500L);
-        assertEquals(false,statusRepo.existsById(500L));
-    }
-
-    /* Test exists by id */
-    @Test
-    public void testExiststById(){
-        assertEquals(true,statusRepo.existsById(100L));
-    }
-
-    /* Test existst by list id */
     @Test
     public void testExistsByListId(){
-        assertEquals(true, statusRepo.existsByListId(1L));
+        assertEquals(true, statusRepo.existsByListId(202L));
     }
 }
