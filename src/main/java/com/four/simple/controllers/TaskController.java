@@ -32,18 +32,18 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public Task getWorkspaceByID(@PathVariable long id){
+    public Task getTasksByID(@PathVariable long id){
 
         return taskRepository.findById(id);
     }
 
     @PostMapping
-    public Task createWorkspace(@RequestBody Task task){
+    public Task createTask(@RequestBody Task task){
         return taskRepository.save(task);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteWorkspace(@PathVariable long id){
+    public void deleteTask(@PathVariable long id){
         taskRepository.deleteById(id);
     }
 
