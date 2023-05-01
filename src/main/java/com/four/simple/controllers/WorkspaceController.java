@@ -29,7 +29,6 @@ public class WorkspaceController {
     @GetMapping
     public List<Workspace> getWorkspaces() {
         return workspaceRepository.findAll();
-
     }
 
     @GetMapping("/{id}")
