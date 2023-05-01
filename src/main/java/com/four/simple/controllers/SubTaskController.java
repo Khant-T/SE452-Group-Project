@@ -18,12 +18,9 @@ import com.four.simple.repositories.SubtaskRepository;
 @RequestMapping(path = "subtasks")
 public class SubTaskController {
   
-    private final SubtaskRepository subtaskRepository;
-
     @Autowired
-    public SubTaskController(SubtaskRepository subtaskRepository) {
-        this.subtaskRepository = subtaskRepository;
-    }
+    private SubtaskRepository subtaskRepository;
+
     @GetMapping
     public List<Subtask> getSubtasks() {
         return subtaskRepository.findAll();

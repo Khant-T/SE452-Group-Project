@@ -18,13 +18,8 @@ import com.four.simple.repositories.TaskRepository;
 @RequestMapping(path = "tasks")
 public class TaskController {
 
-    private final TaskRepository taskRepository;
-
     @Autowired
-    public TaskController(TaskRepository taskRepository)
-    {
-        this.taskRepository = taskRepository;
-    }
+    private TaskRepository taskRepository;
 
     @GetMapping
     public List<Task> getTasks() {

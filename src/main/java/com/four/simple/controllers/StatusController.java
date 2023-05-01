@@ -18,12 +18,8 @@ import com.four.simple.repositories.StatusRepository;
 @RequestMapping(path = "Status")
 public class StatusController {
 
-    private final  StatusRepository statusRepository;
-
     @Autowired
-    public StatusController(StatusRepository statusRepository) {
-        this.statusRepository = statusRepository;
-    } 
+    private StatusRepository statusRepository;
   
     @GetMapping
     public List<Status> getStatus(){

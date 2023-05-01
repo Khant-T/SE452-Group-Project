@@ -18,13 +18,8 @@ import com.four.simple.repositories.WorkspaceRepository;
 @RequestMapping("workspaces")
 public class WorkspaceController {
 
-
-    private final WorkspaceRepository workspaceRepository;
-
     @Autowired
-    public WorkspaceController(WorkspaceRepository workspaceRepository) {
-        this.workspaceRepository = workspaceRepository;
-    }
+    private  WorkspaceRepository workspaceRepository;
 
     @GetMapping
     public List<Workspace> getWorkspaces() {
