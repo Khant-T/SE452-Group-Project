@@ -15,7 +15,7 @@ import com.four.simple.models.Status;
 import com.four.simple.repositories.StatusRepository;
 
 @RestController
-@RequestMapping(path = "Status")
+@RequestMapping(path = "statuses")
 public class StatusController {
 
     @Autowired
