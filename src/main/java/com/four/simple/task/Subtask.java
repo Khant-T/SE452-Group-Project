@@ -1,4 +1,4 @@
-package com.four.simple.models;
+package com.four.simple.task;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

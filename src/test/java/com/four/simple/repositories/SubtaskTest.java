@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.four.simple.models.Subtask;
+import com.four.simple.task.Subtask;
+import com.four.simple.task.SubtaskRepository;
 
 /*
  * Test SubtaskRepository:
