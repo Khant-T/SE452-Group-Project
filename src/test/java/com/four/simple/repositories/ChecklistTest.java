@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.four.simple.models.Checklist;
+import com.four.simple.checklist.Checklist;
+import com.four.simple.checklist.ChecklistRepository;
 
 /*
  * Test SubtaskRepository:

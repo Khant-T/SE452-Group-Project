@@ -1,4 +1,4 @@
-package com.four.simple.models;
+package com.four.simple.workspace;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,14 +14,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Lists")
-public class Checklist {
+@Table(name = "Workspaces")
+public class Workspace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     private String name;
 
-    @Column(name = "workspace_id")
-    private long workspaceId;
+    @Column(name = "user_id", nullable = true)
+    private long userId;
 }

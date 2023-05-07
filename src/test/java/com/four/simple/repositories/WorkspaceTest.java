@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.four.simple.models.Workspace;
+import com.four.simple.workspace.Workspace;
+import com.four.simple.workspace.WorkspaceRepository;
 
 /*
  * Test WorkspaceRepository:

@@ -1,4 +1,4 @@
-package com.four.simple.controllers;
+package com.four.simple.checklist;
 
 import java.util.List;
 
@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.four.simple.models.Status;
-import com.four.simple.repositories.StatusRepository;
 
 @RestController
 @RequestMapping(path = "statuses")
