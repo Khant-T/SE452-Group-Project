@@ -33,7 +33,7 @@ class SimpleApplicationSetupConfig {
 		  .termsOfService(terms)
 		  .license(new License().name(license)
 		  .url(url)));
-	}	
+	}
     @Bean
     public CommonsRequestLoggingFilter logFilter() {
         CommonsRequestLoggingFilter filter
