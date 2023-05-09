@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "tasks")
-public class TaskController
-{
+public class TaskController {
+
     @Autowired
     private TaskRepository taskRepository;
 
