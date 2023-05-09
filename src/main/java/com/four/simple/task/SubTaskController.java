@@ -13,29 +13,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "subtasks")
-public class SubTaskController {
-  
+public class SubTaskController 
+{
     @Autowired
     private SubtaskRepository subtaskRepository;
 
     @GetMapping
-    public List<Subtask> getSubtasks() {
+    public List<Subtask> getSubtasks() 
+    {
         return subtaskRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Subtask getSubtaskByID(@PathVariable long id){
-
+    public Subtask getSubtaskByID(@PathVariable long id)
+    {
         return subtaskRepository.findById(id);
     }
 
     @PostMapping
-    public Subtask createSubTask(@RequestBody Subtask task){
+    public Subtask createSubTask(@RequestBody Subtask task)
+    {
         return subtaskRepository.save(task);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSubtask(@PathVariable long id){
+    public void deleteSubtask(@PathVariable long id)
+    {
         subtaskRepository.deleteById(id);
     }
 
