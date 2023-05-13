@@ -27,7 +27,7 @@ public class ChecklistTest {
     @Test
     public void testCreate() {
         Long count = checklistRepo.count();
-        Checklist list = new Checklist(0L, "Another list", 300);
+        Checklist list = new Checklist(0L, "Another list", 300L);
         checklistRepo.save(list);
         assertEquals(count + 1, checklistRepo.count());
     }
@@ -37,7 +37,7 @@ public class ChecklistTest {
         Checklist list = checklistRepo.findById(201L);
         assertEquals(true, list != null);
         assertEquals("Marketing To-dos", list.getName());
-        assertEquals(101L, list.getWorkspaceId());
+        assertEquals(101, list.getWorkspaceId());
     }
 
     @Test
