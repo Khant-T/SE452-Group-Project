@@ -1,10 +1,15 @@
 package com.four.simple.workspace;
 
+import java.util.List;
+
+import com.four.simple.checklist.Checklist;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,4 +29,7 @@ public class Workspace {
 
     @Column(name = "user_id", nullable = true)
     private long userId;
+
+    @OneToMany
+    private List<Checklist> checklists;
 }
