@@ -35,6 +35,6 @@ public class Workspace {
 
     // @OneToMany
     // private List<Checklist> checklists;
-    @OneToMany
+    @OneToMany(mappedBy = "workspaceId")
     private List<Checklist> checklists;
 }
