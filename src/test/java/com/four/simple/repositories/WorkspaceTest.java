@@ -34,8 +34,10 @@ public class WorkspaceTest {
         // test CREATE
         Long count = workspaceRepo.count();
 
-        Workspace workspaceB = new Workspace(0L, "Workspace B", 0L);
-        Workspace workspaceC = new Workspace(0L, "Workspace C", 0L);
+        // Workspace workspaceB = new Workspace(0L, "Workspace B", 0L);
+        // Workspace workspaceC = new Workspace(0L, "Workspace C", 0L);
+        Workspace workspaceB = Workspace.builder().name("Workspace B").userId(0L).build();
+        Workspace workspaceC = Workspace.builder().name("Workspace C").userId(0L).build();
         workspaceRepo.saveAll(List.of(workspaceB, workspaceC));
 
         assertEquals(count + 2, workspaceRepo.count());
