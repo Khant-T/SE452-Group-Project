@@ -1,10 +1,13 @@
 package com.four.simple.task;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -24,7 +27,6 @@ public class Task {
     @Column(name = "status_id")
     private long statusId;
 
-    public Integer size() {
-        return null;
-    }
+    @OneToMany
+    private List<Subtask> subtasks;
 }

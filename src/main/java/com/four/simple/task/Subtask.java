@@ -5,10 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -24,10 +26,11 @@ public class Subtask {
 
     @Column(name = "description", nullable = false)
     private String description;
-
-    @Column(name = "task_id",nullable = false)
-    private long taskId;
     
-    @Column(name="completed",nullable = false)
+    @Column(name = "completed", nullable = false)
     private int completed;
+
+    @ManyToOne
+    @ToString.Exclude
+    private Task task;
 }
