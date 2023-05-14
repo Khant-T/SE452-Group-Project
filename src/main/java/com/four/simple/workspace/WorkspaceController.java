@@ -1,45 +1,3 @@
-// package com.four.simple.workspace;
-
-// import java.util.List;
-
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
-
-// @RestController
-// @RequestMapping("workspaces")
-// public class WorkspaceController {
-
-//     @Autowired
-//     private  WorkspaceRepository workspaceRepository;
-
-//     @GetMapping
-//     public List<Workspace> getWorkspaces() {
-//         return workspaceRepository.findAll();
-//     }
-
-//     @GetMapping("/{id}")
-//     public Workspace getWorkspaceByID(@PathVariable long id){
-
-//         return workspaceRepository.findById(id);
-//     }
-
-//     @PostMapping
-//     public Workspace createWorkspace(@RequestBody Workspace workspace){
-//         return workspaceRepository.save(workspace);
-//     }
-
-//     @DeleteMapping("/{id}")
-//     public void deleteWorkspace(@PathVariable long id){
-//         workspaceRepository.deleteById(id);
-//     }
-// }
-
 package com.four.simple.workspace;
 
 import java.util.HashMap;
@@ -71,19 +29,27 @@ public class WorkspaceController {
 
     @GetMapping
     @Operation(summary = "Get all WorkSpaces")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",description = "Successfully retrieved all the workspaces",
-                    content = @io.swagger.v3.oas.annotations.media.Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = Workspace.class),
-                            examples =   {@ExampleObject(value = "{\"id\": 1, \"name\": \"John Doe\",\"userId\": 1}")}
-
-                    )),
-            @ApiResponse(responseCode = "404",description = "Workspaces not found")
-    })
-
+    @ApiResponses(
+        value = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successfully retrieved all the workspaces",
+                content = @io.swagger.v3.oas.annotations.media.Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = Workspace.class),
+                    examples =   {
+                        @ExampleObject(value = "{\"id\": 1, \"name\": \"Workspace A\",\"user_id\": 1}"),
+                        @ExampleObject(value = "{\"id\": 2, \"name\": \"Workspace B\",\"user_id\": 1}")
+                    }
+                )
+            ),
+            @ApiResponse(
+                responseCode = "404",
+                description = "Workspaces not found"
+            )
+        }
+    )
     public List<Workspace> getWorkspaces() {
-
         log.traceEntry("WorkSpace List");
         var workspaceList = workspaceRepository.findAll();
         if(!workspaceList.isEmpty()) {
