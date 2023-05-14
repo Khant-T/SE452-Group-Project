@@ -11,31 +11,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping(path = "tasks")
-public class TaskController {
-
+@Tag(name = "Task", description = "Task API")
+public class TaskController
+{
     @Autowired
     private TaskRepository taskRepository;
 
     @GetMapping
-    public List<Task> getTasks() {
+    @Operation(summary = "Retrieve all available tasks")
+    public List<Task> getTasks()
+    {
         return taskRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Task getTasksByID(@PathVariable long id){
-
+    @Operation(summary = "Retrieve a specific task based on the provided ID")
+    public Task getTasksByID(@PathVariable long id)
+    {
         return taskRepository.findById(id);
     }
 
     @PostMapping
-    public Task createTask(@RequestBody Task task){
+    @Operation(summary = "Create a new task")
+    public Task createTask(@RequestBody Task task)
+    {
         return taskRepository.save(task);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable long id){
+    @Operation(summary = "Delete a task based on the provided ID")
+    public void deleteTask(@PathVariable long id)
+    {
         taskRepository.deleteById(id);
     }
 
