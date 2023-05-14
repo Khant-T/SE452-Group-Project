@@ -19,8 +19,6 @@ import com.four.simple.task.TaskRepository;
  *  - UPDATE
  *  - DELETE
  * 
- * For later:
- *  - findByListId
  */
 
  @SpringBootTest
@@ -32,13 +30,13 @@ import com.four.simple.task.TaskRepository;
     @Test
     public void testCRUD()
     {
-        long count = taskRepo.count();
+        long originalCount = taskRepo.count();
 
         // Test CREATE
         Task taskA = Task.builder().description("Task A").build();
         Task taskB = Task.builder().description("Task B").build();
         taskRepo.saveAll(List.of(taskA, taskB));
-        assertEquals(count + 2, taskRepo.count());
+        assertEquals(originalCount + 2, taskRepo.count());
 
         // Get IDs of newly created Task Objects
         long taskAId = taskA.getId();
@@ -46,7 +44,7 @@ import com.four.simple.task.TaskRepository;
 
         // Test READ
         Task taskBRead = taskRepo.findById(taskBId);
-        
+
         if (taskBRead == null)
             taskBRead = new Task();
 
