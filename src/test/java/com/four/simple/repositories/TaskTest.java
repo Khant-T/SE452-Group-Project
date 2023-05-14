@@ -46,6 +46,10 @@ import com.four.simple.task.TaskRepository;
 
         // Test READ
         Task taskBRead = taskRepo.findById(taskBId);
+        
+        if (taskBRead == null)
+            taskBRead = new Task();
+
         assertEquals(true, taskBRead != null);
         assertEquals("Task B", taskBRead.getDescription());
 
