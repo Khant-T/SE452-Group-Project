@@ -3,6 +3,7 @@ package com.four.simple.task;
 import java.util.List;
 
 import com.four.simple.checklist.Checklist;
+import com.four.simple.checklist.Status;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
@@ -25,8 +27,10 @@ public class Task {
 
     private String description;
 
-    @Column(name = "status_id")
-    private long statusId;
+    // @Column(name = "status_id")
+    // private long statusId;
+    @OneToOne
+    private Status status;
 
     @OneToMany
     private List<Subtask> subtasks;
