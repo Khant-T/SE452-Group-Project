@@ -5,7 +5,7 @@ import java.util.List;
 import com.four.simple.checklist.Checklist;
 import com.four.simple.checklist.Status;
 
-import jakarta.persistence.Column;
+// import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
