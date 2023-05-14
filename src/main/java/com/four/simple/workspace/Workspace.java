@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Workspaces")
+@Table
 public class Workspace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

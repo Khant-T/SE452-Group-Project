@@ -2,7 +2,6 @@ package com.four.simple.checklist;
 
 import com.four.simple.workspace.Workspace;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
