@@ -9,9 +9,9 @@ public interface StatusRepository
         
     Status findById(long id);
 
-    List<Status> findByListId(long list_id);
+    // List<Status> findByListId(long list_id);
 
-    boolean existsByListId(long list_id);
+    // boolean existsByListId(long list_id);
 
     
 }

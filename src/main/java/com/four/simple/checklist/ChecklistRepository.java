@@ -9,8 +9,8 @@ public interface ChecklistRepository
     
     Checklist findById(long id);
 
-    List<Checklist> findByWorkspaceId(long workspace_id);
+    // List<Checklist> findByWorkspaceId(long workspace_id);
 
-    boolean existsByWorkspaceId(long workspace_id);
+    // boolean existsByWorkspaceId(long workspace_id);
 
 }
