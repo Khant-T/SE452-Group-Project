@@ -2,6 +2,7 @@ package com.four.simple.checklist;
 
 import java.util.List;
 
+import com.four.simple.task.Task;
 import com.four.simple.workspace.Workspace;
 
 import jakarta.persistence.Entity;
@@ -35,4 +36,7 @@ public class Checklist {
 
     @OneToMany
     private List<Status> statuses;
+
+    @OneToMany
+    private List<Task> tasks;
 }

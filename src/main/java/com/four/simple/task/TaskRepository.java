@@ -1,6 +1,6 @@
 package com.four.simple.task;
 
-import java.util.List;
+// import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,8 +9,8 @@ public interface TaskRepository
 {
     Task findById(long id);
     
-    List<Task> findByListId(long listId);
+    // List<Task> findByListId(long listId);
 
-    List<Task> findByStatusId(long statusId);
+    // List<Task> findByStatusId(long statusId);
 }
  
