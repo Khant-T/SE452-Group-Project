@@ -3,6 +3,8 @@ package com.four.simple.workspace;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -66,8 +68,7 @@ public class WorkspaceController {
                     schema = @Schema(implementation = Workspace.class),
                     examples =   {@ExampleObject(value = "{\"id\": -1, \"name\": \"John Doe\",\"userId\": 1}")}
 
-            )),
-            @ApiResponse(responseCode = "404",description = "Workspace not found")
+            ))
     })
     public Workspace getWorkspaceByID(@Parameter(name = "Provide a WorkSpace ID",required = true) @PathVariable long id){
 
@@ -104,6 +105,21 @@ public class WorkspaceController {
         log.traceExit("Exit Delete Workspace");
     }
 
+    @PutMapping("/{id}")
+    @Operation(summary = "Update Workspace")
+    public void updateWorkspace(@PathVariable long id,@RequestBody Workspace workspace){
+        Optional<Workspace> workspaceOptional1 = Optional.ofNullable(workspaceRepository.findById(id));
+        Workspace existingResource = workspaceOptional1.get();
+        existingResource.setName(workspace.getName());
+        existingResource.setUserId(workspace.getUserId());
+
+        workspaceRepository.save(existingResource);
+
+
+    }
+
+
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -115,5 +131,7 @@ public class WorkspaceController {
         });
         return errors;
     }
+
+
 
 }

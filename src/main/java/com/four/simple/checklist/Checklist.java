@@ -17,11 +17,7 @@ public class Checklist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
     private String name;
-
-    @JoinColumn(name = "workspace_id")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @ToString.Exclude
-    private Workspace workspaceId;
+    @Column(name = "workspace_id")
+    private long workspaceId;
 }

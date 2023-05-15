@@ -18,7 +18,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -32,9 +31,4 @@ public class Workspace {
 
     @Column(name = "user_id", nullable = true)
     private long userId;
-
-    // @OneToMany
-    // private List<Checklist> checklists;
-    @OneToMany(mappedBy = "workspaceId")
-    private List<Checklist> checklists;
 }
