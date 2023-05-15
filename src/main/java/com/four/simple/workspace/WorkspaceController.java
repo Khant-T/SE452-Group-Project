@@ -3,6 +3,8 @@ package com.four.simple.workspace;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -97,6 +99,19 @@ public class WorkspaceController {
         log.traceEntry("Entry Create Workspace",workspace);
         workspaceRepository.save(workspace);
         log.traceExit("Exit Create Workspace",workspace);
+
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update Workspace")
+    public void updateWorkspace(@PathVariable long id,@RequestBody Workspace workspace){
+        Optional<Workspace> workspaceOptional1 = Optional.ofNullable(workspaceRepository.findById(id));
+        Workspace existingResource = workspaceOptional1.get();
+        existingResource.setName(workspace.getName());
+        existingResource.setUserId(workspace.getUserId());
+
+        workspaceRepository.save(existingResource);
+
 
     }
 
