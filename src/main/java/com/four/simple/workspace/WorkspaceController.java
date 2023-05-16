@@ -59,7 +59,7 @@ public class WorkspaceController {
             return workspaceRepository.findAll();
         }
 
-        throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "No workspaces found");
+        throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "No workspace found");
     }
 
     @GetMapping("/{id}")
