@@ -1,0 +1,32 @@
+#Be sure to change volumn location
+#start:   docker-compose -f docker-sql.yml up -d
+#stop:    docker-compse -f docker-sql.yml down
+
+version: '3.8'
+services:
+  postgresql:
+    container_name: demo-postgres
+    image: postgres
+    env_file: ./.env
+    volumes:
+      - "$POSTGRES_EXTERNAL_LOC:/var/lib/postgresql/data"
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+  app:
+    depends_on:
+      - postgresql
+    container_name: demo-app
+    image: satyayogananddepaul/se452-simple-application
+    env_file: ./.env
+    ports:
+      - "8085:8080"
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:postgresql://postgresql:$POSTGRES_PORT/$SQL_DB",
+        "spring.datasource.username" : "$SQL_USER",
+        "spring.datasource.password" : "$SQL_PASSWORD",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'

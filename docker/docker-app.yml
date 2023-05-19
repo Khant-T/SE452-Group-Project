@@ -1,0 +1,13 @@
+#Be sure to change volumn location
+#start:   docker-compose up -d
+#stop:    docker-compse down
+
+version: '3.8'
+
+services:
+  app:
+    container_name: demo-app
+    image: satyayogananddepaul/simple-application
+    env_file: ./.env
+    ports:
+      - "8085:8080"
