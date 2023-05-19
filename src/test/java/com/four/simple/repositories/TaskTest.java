@@ -1,35 +1,35 @@
-package com.four.simple.repositories;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import com.four.simple.task.Task;
-import com.four.simple.task.TaskRepository;
-
-/*
- * Test TaskRepository:
- * 
- *  - CREATE
- *  - READ
- *  - UPDATE
- *  - DELETE
- * 
- */
-
- @SpringBootTest
- public class TaskTest
- {
-    @Autowired
-    private TaskRepository taskRepo;
-
-    @Test
-    public void testCRUD()
-    {
+//package com.four.simple.repositories;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//import java.util.List;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import com.four.simple.task.Task;
+//import com.four.simple.task.TaskRepository;
+//
+///*
+// * Test TaskRepository:
+// *
+// *  - CREATE
+// *  - READ
+// *  - UPDATE
+// *  - DELETE
+// *
+// */
+//
+// @SpringBootTest
+// public class TaskTest
+// {
+//    @Autowired
+//    private TaskRepository taskRepo;
+//
+//    @Test
+//    public void testCRUD()
+//    {
 //        long originalCount = taskRepo.count();
 //
 //        // Test CREATE
@@ -62,5 +62,5 @@ import com.four.simple.task.TaskRepository;
 //        // test DELETE
 //        taskRepo.deleteById(taskAId);
 //        assertEquals(false, taskRepo.existsById(taskAId));
-    }
- }
+//    }
+// }

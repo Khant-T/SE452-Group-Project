@@ -1,34 +1,34 @@
-package com.four.simple.repositories;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import com.four.simple.task.Subtask;
-import com.four.simple.task.SubtaskRepository;
-
-/*
- * Test SubtaskRepository:
- * 
- * - CREATE
- * - READ
- * - UPDATE
- * - DELETE
- * 
- */
-
-@SpringBootTest
-public class SubtaskTest {
-    @Autowired
-    private SubtaskRepository subtaskRepo;
-
-    @Test
-    public void testCRUD()
-    {
+//package com.four.simple.repositories;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//import java.util.List;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import com.four.simple.task.Subtask;
+//import com.four.simple.task.SubtaskRepository;
+//
+///*
+// * Test SubtaskRepository:
+// *
+// * - CREATE
+// * - READ
+// * - UPDATE
+// * - DELETE
+// *
+// */
+//
+//@SpringBootTest
+//public class SubtaskTest {
+//    @Autowired
+//    private SubtaskRepository subtaskRepo;
+//
+//    @Test
+//    public void testCRUD()
+//    {
 //        long originalCount = subtaskRepo.count();
 //
 //        // Test CREATE
@@ -60,5 +60,5 @@ public class SubtaskTest {
 //        // Test DELETE
 //        subtaskRepo.deleteById(subtaskAId);
 //        assertEquals(false, subtaskRepo.existsById(subtaskAId));
-    }
-}
+//    }
+//}
