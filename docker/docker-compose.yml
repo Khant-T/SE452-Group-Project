@@ -5,7 +5,7 @@
 version: '3.8'
 services:
   postgresql:
-    container_name: demo-postgres
+    container_name: postgres
     image: postgres
     env_file: ./.env
     volumes:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - postgresql
     container_name: demo-app
-    image: satyayogananddepaul/se452-simple-application
+    image: satyayogananddepaul/simple-application
     env_file: ./.env
     ports:
       - "8085:8080"
