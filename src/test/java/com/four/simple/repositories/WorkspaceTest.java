@@ -1,75 +1,66 @@
-// package com.four.simple.repositories;
+package com.four.simple.repositories;
 
-// import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// import java.util.List;
-// import org.junit.jupiter.api.Test;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.context.SpringBootTest;
+import java.util.List;
 
-// import com.four.simple.workspace.Workspace;
-// import com.four.simple.workspace.WorkspaceRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-// /*
-//  * Test WorkspaceRepository:
-//  * 
-//  *  - CREATE
-//  *  - READ
-//  *  - UPDATE
-//  *  - DELETE
-//  *  - findById
-//  *  - findByUserId
-//  */
+import com.four.simple.workspace.Workspace;
+import com.four.simple.workspace.WorkspaceRepository;
 
-// @SpringBootTest
-// public class WorkspaceTest {
-//     @Autowired
-//     private WorkspaceRepository workspaceRepo;
+/*
+ * Test WorkspaceRepository:
+ * 
+ *  - CREATE
+ *  - READ
+ *  - UPDATE
+ *  - DELETE
+ *
+ */
 
-//     @Test
-//     public void testCRUD()
-//     {
-//         // Workspaces 100, 115 already exist on the database
+ @SpringBootTest
+ public class WorkspaceTest
+ {
+    @Autowired
+    private WorkspaceRepository workspaceRepository;
 
-//         // test CREATE
-//         Long count = workspaceRepo.count();
+    @Test
+    public void testCRUD()
+    {
+        long originalCount = workspaceRepository.count();
 
-//         // Workspace workspaceB = new Workspace(0L, "Workspace B", 0L);
-//         // Workspace workspaceC = new Workspace(0L, "Workspace C", 0L);
-//         Workspace workspaceB = Workspace.builder().name("Workspace B").userId(0L).build();
-//         Workspace workspaceC = Workspace.builder().name("Workspace C").userId(0L).build();
-//         workspaceRepo.saveAll(List.of(workspaceB, workspaceC));
+        // Test CREATE
+        Workspace wsA = Workspace.builder().name("Workspace A").userId(0L).build();
+        Workspace wsB = Workspace.builder().name("Workspace B").userId(0L).build();
+        workspaceRepository.saveAll(List.of(wsA, wsB));
+        assertEquals(originalCount + 2, workspaceRepository.count());
 
-//         assertEquals(count + 2, workspaceRepo.count());
+        // Get IDs of newly created Workspace objects
+        long wsAId = wsA.getId();
+        long wsBId = wsB.getId();
 
-//         // test READ
-//         Workspace workspace = workspaceRepo.findById(101);
-//         assertEquals(true, workspace != null);
-//         assertEquals(101, workspace.getId());
-//         assertEquals("Marketing Space", workspace.getName());
+        // Test READ
+        Workspace wsBRead = workspaceRepository.findById(wsBId);
 
-//         // test UPDATE
-//         workspace = workspaceRepo.findById(102L);
-//         workspace.setName("Random Workspace");
-//         workspaceRepo.save(workspace);
+        if (wsBRead == null)
+            wsBRead = new Workspace();
 
-//         Workspace updated = workspaceRepo.findById(102L);
-//         assertEquals("Random Workspace", updated.getName());
+        assertEquals(true, wsBRead != null);
+        assertEquals("Workspace B", wsBRead.getName());
 
-//         // test DELETE
-//         workspaceRepo.deleteById(102L);
-//         assertEquals(false, workspaceRepo.existsById(102L));
-//     }
+        // Test UPDATE
+        Workspace wsBUpdate = wsBRead;
+        wsBUpdate.setName("Workspace B, Updated");
+        workspaceRepository.save(wsBUpdate);
 
-//     @Test
-//     public void testFindByUserId(){
-//         assertEquals(3, workspaceRepo.findByUserId(0L).size());
-//     }
+        wsBUpdate = workspaceRepository.findById(wsBId);
+        assertEquals("Workspace B, Updated", wsBUpdate.getName());
 
-//     @Test
-//     public void testFindById(){
-//         Workspace workspace = workspaceRepo.findById(101L);
-//         assertEquals("Marketing Space", workspace.getName());
-//     }
-// }
-
+        // Test DELETE
+        workspaceRepository.deleteById(wsAId);
+        assertEquals(false, workspaceRepository.existsById(wsAId));
+    }
+}
