@@ -10,7 +10,6 @@ spring:
     url: jdbc:h2:mem:se452dev
     username: sa
     password:
-    generate-unique-name : false
 
   web:
     resources:

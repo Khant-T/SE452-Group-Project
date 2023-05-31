@@ -6,7 +6,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/se452-simple-application-db
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: password
   jpa:
