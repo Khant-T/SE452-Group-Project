@@ -1,0 +1,37 @@
+
+app:
+  doc:
+    version: 2023-Spring
+    title: SE352-452 Group-4 Simple Application Demo
+    description: This is a sample documentation for SE352-452 Concepts a library for OpenAPI 3 with spring boot.
+    terms-of-service: http://swagger.io/terms/
+    license: Apache 2.0
+    url: http://springdoc.org
+
+spring:
+  profiles:
+    active: prod
+
+
+
+#spring.h2.console.enabled=true
+#
+#spring.datasource.generate-unique-name=false
+#spring.datasource.name=tasks
+#spring.datasource.username=sa
+#spring.datasource.password=
+#spring.datasource.url=jdbc:h2:mem:tasks
+#spring.datasource.url=jdbc:postgresql://localhost:5432/se452-simple-application-db
+#spring.datasource.username=postgres
+#spring.datasource.password=password
+#spring.jpa.generate-ddl=true
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.defer-datasource-initialization=true
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.H2Dialect
+#logging.level.root=DEBUG
+#spring.web.resources.add-mappings=true
+#
+#spring.sql.init.mode=always
+

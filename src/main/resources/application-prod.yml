@@ -1,0 +1,21 @@
+environment: production
+
+logging:
+  level:
+    root: ERROR
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/se452-simple-application-db
+    username: postgres
+    password: password
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
