@@ -2,7 +2,7 @@ environment: production
 
 logging:
   level:
-    root: ERROR
+    root: INFO
 
 spring:
   jpa:
@@ -13,10 +13,3 @@ spring:
     url: jdbc:postgresql://localhost:5432/se452db
     username: postgres
     password: password
-
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.H2Dialect
-#        format_sql: true
