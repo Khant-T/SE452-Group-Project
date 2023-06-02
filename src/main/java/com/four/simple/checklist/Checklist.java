@@ -5,14 +5,7 @@ import java.util.List;
 import com.four.simple.task.Task;
 import com.four.simple.workspace.Workspace;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,13 +23,13 @@ public class Checklist {
     
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @ToString.Exclude
     private Workspace workspace;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Status> statuses;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Task> tasks;
 }

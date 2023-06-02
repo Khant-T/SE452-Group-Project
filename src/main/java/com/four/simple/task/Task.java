@@ -5,14 +5,7 @@ import java.util.List;
 import com.four.simple.checklist.Checklist;
 import com.four.simple.checklist.Status;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,13 +27,13 @@ public class Task {
 
     // @Column(name = "status_id")
     // private long statusId;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Status status;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Subtask> subtasks;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     private Checklist checklist;
 }
