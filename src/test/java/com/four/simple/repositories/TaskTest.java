@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.four.simple.task.Task;
 import com.four.simple.task.TaskRepository;
+import org.springframework.test.context.ActiveProfiles;
 
 /*
  * Test TaskRepository:
@@ -22,6 +23,7 @@ import com.four.simple.task.TaskRepository;
  */
 
  @SpringBootTest
+ @ActiveProfiles("test")
  public class TaskTest
  {
     @Autowired

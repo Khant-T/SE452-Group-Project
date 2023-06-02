@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.four.simple.workspace.Workspace;
 import com.four.simple.workspace.WorkspaceRepository;
+import org.springframework.test.context.ActiveProfiles;
 
 /*
  * Test WorkspaceRepository:
@@ -22,6 +23,7 @@ import com.four.simple.workspace.WorkspaceRepository;
  */
 
  @SpringBootTest
+ @ActiveProfiles("test")
  public class WorkspaceTest
  {
     @Autowired

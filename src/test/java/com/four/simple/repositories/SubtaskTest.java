@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.four.simple.task.Subtask;
 import com.four.simple.task.SubtaskRepository;
+import org.springframework.test.context.ActiveProfiles;
 
 /*
  * Test SubtaskRepository:
@@ -22,6 +23,7 @@ import com.four.simple.task.SubtaskRepository;
  */
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class SubtaskTest {
     @Autowired
     private SubtaskRepository subtaskRepo;
