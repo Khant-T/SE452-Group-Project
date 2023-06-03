@@ -45,3 +45,15 @@ INSERT INTO subtask (id, description, task_id, completed)
         (551, 'Day 1. Brand Strategy by Dr. A', 402, 1),
         (552, 'Day 2. Competitive Positioning by Miss I', 402, 1),
         (553, 'Day 3. Corporate Identity & Creative Development by Mr. O', 402, 0);
+
+-- User
+INSERT INTO users (id,email,username,password)
+    values
+        (111,'user@depaul.edu','user','password'),
+        (112,'admin@depaul.edu','admin','password');
+
+-- User_Roles
+INSERT INTO user_roles(id,name)
+    values
+        (111,'ROLE_USER'),
+        (112,'ROLE_ADMIN');
