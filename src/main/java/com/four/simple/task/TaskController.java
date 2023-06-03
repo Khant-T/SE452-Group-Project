@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping(path = "tasks")
+@RequestMapping(path = "api/tasks")
 @Tag(name = "Task", description = "Task API")
 public class TaskController
 {

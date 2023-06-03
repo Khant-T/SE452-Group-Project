@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Subtasks</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+    <!--    <link rel="stylesheet" type="text/css" href="classpath:/CSS/dashboard.css">-->
+</head>
+<body>
+<div class="hero">
+    <div>
+        <p class="title">Subtasks</p>
+        <form method="post" th:action="@{/subtasks}" th:object="${subtask}">
+            <input class="input" id="id" placeholder="" required th:field="*{id}" type="text" readonly/>
+            <input class="input"id="description" placeholder="Enter Description" required th:field="*{description}" type="text"/>
+            <input class="input"id="completed" placeholder="Enter Completed Status" required th:field="*{completed}" type="text"/>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" th:text="${btnAddOrModifyLabel}"></button>
+
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    &nbsp;
+    &nbsp;
+    <p class="title">Subtask List</p>
+    <div th:if="${#lists.isEmpty(subtasks)}">No Workspace</div>
+    <div th:unless="${#lists.isEmpty(subtasks)}">
+        <table class="table is-striped is-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Completed_Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="subtask: ${subtasks}">
+                <td th:text="${subtask.id}"></td>
+                <td th:text="${subtask.description}"></td>
+                <td th:text="${subtask.completed}"></td>
+                <td><a th:href="'subtasks/edit/' + ${subtask.id}"><i class="fas fa-user-edit ml-2"></i></a></td>
+                <td><a th:href="'subtasks/delete/' + ${subtask.id}"><i class="fas fa-user-times ml-2"></i></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <strong>SE452</strong> by
+        <a
+                href="https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=SE&CatalogNbr=452"
+        >Yours Truly</a
+        >
+    </div>
+</footer>
+</body>
+</html>
