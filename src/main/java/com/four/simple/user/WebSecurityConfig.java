@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/tasks/**").permitAll()
                 .requestMatchers("/subtasks/**").permitAll()
                 .requestMatchers("/workspaces/**").permitAll()
-                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/swagger-ui/**").hasRole("ADMIN")
                 .requestMatchers("/statuses/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 .and().formLogin();

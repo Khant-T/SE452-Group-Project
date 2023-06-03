@@ -4,9 +4,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,11 +27,17 @@ public class RegistrationService {
     @Autowired
     private PasswordEncoder encoder;
 
+    @GetMapping("/signup")
+    public ModelAndView showRegistrationPage() {
+        ModelAndView modelAndView=new ModelAndView("signup");
+        return modelAndView;
+    }
+
     @PostMapping("/signup")
     @Operation(summary = "Create User & It's Roles")
     public String registerUser(SingupRequest singupRequest){
         if(userRepository.existsByUsername(singupRequest.getUsername())){
-            return "Error: Username is already takken!";
+            return "Error: Username is already taken!";
         }
         if(userRepository.existsByEmail(singupRequest.getEmail())){
             return "Error: Email is already in use!";
@@ -67,6 +76,6 @@ public class RegistrationService {
 
         userRepository.save(user);
 
-        return "redirect:/signup";
+        return "You have successfully registerd now!";
     }
 }
