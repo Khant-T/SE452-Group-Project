@@ -9,7 +9,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: password
-
     initialization-mode: never
   jpa:
     generate-ddl: true
@@ -17,10 +16,6 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
 
   sql:
     init:
@@ -31,4 +26,3 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-

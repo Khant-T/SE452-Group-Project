@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <!--    <link rel="stylesheet" type="text/css" href="classpath:/CSS/dashboard.css">-->
+</head>
+<body>
+<div class="hero">
+    <div>
+        <p class="title">Tasks</p>
+        <form method="post" th:action="@{/tasks}" th:object="${task}">
+            <input class="input" id="id" placeholder="" required th:field="*{id}" type="text" readonly/>
+            <input class="input" id="description" placeholder="Enter description" required th:field="*{description}" type="text"/>
+            <input class="input"id="userId" placeholder="Enter Status" required th:field="*{status}" type="text"/>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" th:text="${btnAddOrModifyLabel}"></button>
+
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    &nbsp;
+    &nbsp;
+    <p class="title">Task List</p>
+    <div th:if="${#lists.isEmpty(tasks)}">No Workspace</div>
+    <div th:unless="${#lists.isEmpty(tasks)}">
+        <table class="table is-striped is-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="task: ${tasks}">
+                <td th:text="${task.id}"></td>
+                <td th:text="${task.description}"></td>
+                <td th:text="${task.status}"></td>
+                <td><a th:href="'tasks/edit/' + ${task.id}"><i class="fas fa-user-edit ml-2"></i></a></td>
+                <td><a th:href="'tasks/delete/' + ${task.id}"><i class="fas fa-user-times ml-2"></i></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <strong>SE452</strong> by
+        <a
+                href="https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=SE&CatalogNbr=452"
+        >Yours Truly</a
+        >
+    </div>
+</footer>
+</body>
+</html>

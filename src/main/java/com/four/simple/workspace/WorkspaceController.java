@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
-@RequestMapping("workspaces")
+@RequestMapping("api/workspaces")
 @Tag(name = "Workspace", description = "Everything about your workspaces")
 @Log4j2
 public class WorkspaceController {
