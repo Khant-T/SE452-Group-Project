@@ -1,7 +1,5 @@
-package com.four.simple.webcontroller;
+package com.four.simple.workspace;
 
-import com.four.simple.workspace.Workspace;
-import com.four.simple.workspace.WorkspaceRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/workspaces")
-public class workspaceService {
+public class WorkspaceService {
     @Autowired
     private WorkspaceRepository repo;
 

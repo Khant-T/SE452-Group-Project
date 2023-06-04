@@ -1,16 +1,5 @@
-package com.four.simple.webcontroller;
+package com.four.simple.task;
 
-import com.four.simple.task.Task;
-import com.four.simple.task.TaskRepository;
-import com.four.simple.workspace.Workspace;
-import com.four.simple.workspace.WorkspaceRepository;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import com.four.simple.workspace.Workspace;
-import com.four.simple.workspace.WorkspaceRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/tasks")
-public class tasksService {
+public class TasksService {
 
     @Autowired
     private TaskRepository repo;

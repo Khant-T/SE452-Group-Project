@@ -30,21 +30,21 @@ public class SubtaskController
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Retrieve a specific task based on the provided ID")
+    @Operation(summary = "Retrieve a specific subtask based on the provided ID")
     public Subtask getTasksByID(@PathVariable long id)
     {
         return subtaskRepository.findById(id);
     }
 
     @PostMapping
-    @Operation(summary = "Create a new task")
+    @Operation(summary = "Create a new subtask")
     public Subtask createTask(@RequestBody Subtask subtask)
     {
         return subtaskRepository.save(subtask);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete a task based on the provided ID")
+    @Operation(summary = "Delete a subtask based on the provided ID")
     public void deleteTask(@PathVariable long id)
     {
         subtaskRepository.deleteById(id);
