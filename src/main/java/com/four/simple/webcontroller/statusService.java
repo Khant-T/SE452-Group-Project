@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -34,7 +35,9 @@ public class statusService {
     private StatusRepository repo;
 
     @GetMapping
-    public String list(Model model, HttpSession session) {
+    public ModelAndView list(Model model, HttpSession session) {
+        ModelAndView mAndV = new ModelAndView("simple/statuslist");
+
         model.addAttribute("statuses", repo.findAll());
         if (session.getAttribute("status") == null) {
             model.addAttribute("status", new Status());
@@ -43,7 +46,7 @@ public class statusService {
             model.addAttribute("status", session.getAttribute("status"));
             model.addAttribute("btnAddOrModifyLabel", "Modify");
         }
-        return "workspace/statuslist";
+        return mAndV;
     }
 
     @GetMapping("/edit/{id}")

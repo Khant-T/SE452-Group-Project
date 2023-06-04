@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -22,8 +19,12 @@ public class workspaceService {
     private WorkspaceRepository repo;
 
     @GetMapping
-    public String list(Model model, HttpSession session) {
+    public ModelAndView list(Model model, HttpSession session) {
+
+        ModelAndView mAndV = new ModelAndView("simple/workspacelist");
+
         model.addAttribute("workspaces", repo.findAll());
+
         if (session.getAttribute("workspace") == null) {
             model.addAttribute("workspace", new Workspace());
             model.addAttribute("btnAddOrModifyLabel", "Add");
@@ -31,7 +32,7 @@ public class workspaceService {
             model.addAttribute("workspace", session.getAttribute("workspace"));
             model.addAttribute("btnAddOrModifyLabel", "Modify");
         }
-        return "workspace/workspacelist";
+        return mAndV;
     }
 
     @GetMapping("/edit/{id}")

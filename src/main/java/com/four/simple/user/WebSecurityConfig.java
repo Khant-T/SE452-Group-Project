@@ -32,16 +32,32 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.cors().and().csrf().disable().authorizeHttpRequests()
+        /*http.cors().and().csrf().disable().authorizeHttpRequests()
                 .requestMatchers("/api/auth/signup").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/test/**").permitAll()
+                .requestMatchers("/tasks/**").hasRole("USER")
+                .requestMatchers("/subtasks/**").permitAll()
+                .requestMatchers("/statuses/**").permitAll()
+                .requestMatchers("/workspaces/**").permitAll()
+                .requestMatchers("/api/workspaces").permitAll()
+                .requestMatchers("/swagger-ui/**").hasRole("ADMIN")
+                .requestMatchers("/h2-console").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()
+                .and().formLogin();*/
+
+        http.cors().and().csrf().disable().authorizeHttpRequests()
+                .requestMatchers("/swagger-ui/**").hasRole("ADMIN")
+                .requestMatchers("/workspaces/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers("/tasks/**").permitAll()
                 .requestMatchers("/subtasks/**").permitAll()
-                .requestMatchers("/workspaces/**").permitAll()
-                .requestMatchers("/swagger-ui/**").hasRole("ADMIN")
                 .requestMatchers("/statuses/**").permitAll()
-                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/api/workspaces").permitAll()
+                .requestMatchers("/api/tasks").permitAll()
+                .requestMatchers("/api/subtasks").permitAll()
+                .requestMatchers("/api/statuses").permitAll()
+                .requestMatchers("/api/auth/signup").permitAll()
+                .anyRequest().permitAll()
                 .and().formLogin();
 
         http.headers().frameOptions().sameOrigin();

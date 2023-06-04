@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -26,7 +27,10 @@ public class subtasksService {
     private SubtaskRepository repo;
 
     @GetMapping
-    public String list(Model model, HttpSession session) {
+    public ModelAndView list(Model model, HttpSession session) {
+
+        ModelAndView mAndV = new ModelAndView("simple/subtasklist");
+
         model.addAttribute("subtasks", repo.findAll());
         if (session.getAttribute("subtask") == null) {
             model.addAttribute("subtask", new Subtask());
@@ -35,7 +39,7 @@ public class subtasksService {
             model.addAttribute("subtask", session.getAttribute("subtask"));
             model.addAttribute("btnAddOrModifyLabel", "Modify");
         }
-        return "workspace/subtasklist";
+        return mAndV;
     }
 
     @GetMapping("/edit/{id}")
