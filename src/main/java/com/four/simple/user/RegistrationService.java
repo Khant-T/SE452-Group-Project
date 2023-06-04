@@ -76,6 +76,6 @@ public class RegistrationService {
 
         userRepository.save(user);
 
-        return "You have successfully registerd now!";
+        return "You have successfully registered now!";
     }
 }

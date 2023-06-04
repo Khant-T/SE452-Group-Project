@@ -17,15 +17,12 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-
-  sql:
-    init:
-      platform: postgres
-      mode: always
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#
+#  sql:
+#    init:
+#      platform: postgres
+#      mode: always
   data:
     #Default mongoDB host and port
     mongodb:
