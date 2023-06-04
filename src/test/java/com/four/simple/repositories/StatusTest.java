@@ -1,71 +1,69 @@
-// package com.four.simple.repositories;
-//
-// import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-// import org.junit.jupiter.api.Test;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.context.SpringBootTest;
-//
-// import com.four.simple.checklist.Status;
-// import com.four.simple.checklist.StatusRepository;
-//
-// /*
-//  * Test SubtaskRepository:
-//  *
-//  *  - CREATE
-//  *  - READ
-//  *  - UPDATE
-//  *  - DELETE
-//  *  - findByListId
-//  */
-//
-// @SpringBootTest
-// public class StatusTest {
-//     @Autowired
-//     private StatusRepository statusRepo;
-//
-//     @Test
-//     public void testCreate(){
-//         long count = statusRepo.count();
-//         Status status = new Status(0L,"Delayed", 203L);
-//
-//         statusRepo.save(status);
-//         assertEquals(count+1, statusRepo.count());
-//
-//     }
-//
-//     @Test
-//     public void testRead(){
-//         Status status = statusRepo.findById(301L);
-//         assertEquals(true, status != null);
-//         assertEquals("To-do", status.getDescription());
-//         assertEquals(201, status.getListId());
-//     }
-//
-//     @Test
-//     public void testUpdate(){
-//         long count = statusRepo.count();
-//         Status statu1=new Status(600L,"Delay",2L);
-//
-//         statusRepo.save(statu1);
-//         assertEquals(count+1, statusRepo.count());
-//
-//     }
-//
-//     @Test
-//     public void testDelete() {
-//         Status deleted = statusRepo.findById(301L);
-//         statusRepo.delete(deleted);
-//         assertEquals(false, statusRepo.existsById(301L));
-//     }
-//
-//     @Test
-//     public void testFindByListId(){
-//         assertEquals(2, statusRepo.findByListId(202L).size());
-//     }
-//
-//     @Test
-//     public void testExistsByListId(){
-//         assertEquals(true, statusRepo.existsByListId(202L));
-//     }
-// }
+package com.four.simple.repositories;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import com.four.simple.checklist.Status;
+import com.four.simple.checklist.StatusRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+import org.springframework.test.context.ActiveProfiles;
+
+/*
+ * Test WorkspaceRepository:
+ *
+ *  - CREATE
+ *  - READ
+ *  - UPDATE
+ *  - DELETE
+ *
+ */
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class StatusTest
+{
+    @Autowired
+    private StatusRepository statusRepo;
+
+    @Test
+    public void testCRUD()
+    {
+        long originalCount = statusRepo.count();
+
+        // Test CREATE
+        Status sA = Status.builder().description("Status A").build();
+        Status sB = Status.builder().description("Status B").build();
+        statusRepo.saveAll(List.of(sA, sB));
+        assertEquals(originalCount + 2, statusRepo.count());
+
+        // Get IDs of newly created Workspace objects
+        long sAId = sA.getId();
+        long sBId = sB.getId();
+
+        // Test READ
+        Status sBRead = statusRepo.findById(sBId);
+
+        if (sBRead == null)
+            sBRead = new Status();
+
+        assertEquals(true, sBRead != null);
+        assertEquals("Workspace B", sBRead.getDescription());
+
+        // Test UPDATE
+        Status sBUpdate = sBRead;
+        sBUpdate.setDescription("Workspace B, Updated");
+        statusRepo.save(sBUpdate);
+
+        sBUpdate = statusRepo.findById(sBId);
+        assertEquals("Workspace B, Updated", sBUpdate.getDescription());
+
+        // Test DELETE
+        statusRepo.deleteById(sAId);
+        assertEquals(false, statusRepo.existsById(sAId));
+    }
+}
