@@ -52,15 +52,15 @@ public class StatusTest
             sBRead = new Status();
 
         assertEquals(true, sBRead != null);
-        assertEquals("Workspace B", sBRead.getDescription());
+        assertEquals("Status B", sBRead.getDescription());
 
         // Test UPDATE
         Status sBUpdate = sBRead;
-        sBUpdate.setDescription("Workspace B, Updated");
+        sBUpdate.setDescription("Status B, Updated");
         statusRepo.save(sBUpdate);
 
         sBUpdate = statusRepo.findById(sBId);
-        assertEquals("Workspace B, Updated", sBUpdate.getDescription());
+        assertEquals("Status B, Updated", sBUpdate.getDescription());
 
         // Test DELETE
         statusRepo.deleteById(sAId);
