@@ -7,5 +7,4 @@ import java.util.Optional;
 
 @Repository
 public interface MembersRepository extends MongoRepository<Members, String>{
-
 }

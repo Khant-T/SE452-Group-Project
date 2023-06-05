@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "members")
