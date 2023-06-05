@@ -78,6 +78,6 @@ public class RegistrationService {
 
         userRepository.save(user);
 
-        return "Hi User! You have successfully register with us!";
+        return "redirect:/login";
     }
 }
