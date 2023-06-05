@@ -13,33 +13,69 @@
 <div class="gradient" style="background-image: linear-gradient(to right, #fffbd5, #b20a2c);">
     <!-- NAV -->
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
-        <a class="navbar-brand" href="/">SIMPLE TOOL</a>
+        <img width="100px"height="100px"class="logo-image" src="Logo.png"/>
+        &nbsp;
+        <a class="navbar-brand" href="/" style="font-size: 50px;"><em>SIMPLE TOOL</em></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <!-- LINKS -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/workspaces">Workspaces</a>
+<!--                    <a class="nav-link" href="/workspaces">Workspaces</a>-->
+                    <a class="nav-link" href="/workspaces"><button type="submit" class="btn btn-danger" >Workspaces</button></a>
+
+<!--                    <form class="form-inline" method="GET" action="/workspaces">-->
+<!--                        <button type="submit" class="btn btn-danger" >Workspaces</button>-->
+<!--                    </form>-->
                 </li>
+                &nbsp;&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a class="nav-link" href="/tasks">Tasks</a>
+<!--                    <a class="nav-link" href="/tasks">Tasks</a>-->
+                    <a class="nav-link" href="/tasks"><button type="submit" class="btn btn-danger" >Tasks</button></a>
+
+<!--                    <form class="form-inline" method="GET" action="/tasks">-->
+<!--                        <button type="submit" class="btn btn-danger" >Tasks</button>-->
+<!--                    </form>-->
+
                 </li>
+                &nbsp;&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a class="nav-link" href="/subtasks">Subtasks</a>
+                    <a class="nav-link" href="/subtasks"><button type="submit" class="btn btn-danger" >Subtasks</button></a>
+
+<!--                    <form class="form-inline" method="GET" action="/subtasks">-->
+<!--                        <button type="submit" class="btn btn-danger" >Subtasks</button>-->
+<!--                    </form>-->
+<!--                    <a class="nav-link" href="/subtasks">Subtasks</a>-->
                 </li>
+                &nbsp;&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a class="nav-link" href="/statuses">Statuses</a>
+                    <a class="nav-link" href="/statuses"><button type="submit" class="btn btn-danger" >Statuses</button></a>
+
+<!--                    <form class="form-inline" method="GET" action="/statuses">-->
+<!--                        <button type="submit" class="btn btn-danger" >Statuses</button>-->
+<!--                    </form>-->
+<!--                    <a class="nav-link" href="/statuses">Statuses</a>-->
                 </li>
             </ul>
             <!-- REGISTRATION & LOG-IN -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/api/auth/signup">Register</a>
+<!--                    <a class="nav-link" href="/api/auth/signup">Register</a>-->
+                    <a class="nav-link" href="/api/auth/signup"><button type="submit" class="btn btn-danger" >Register</button></a>
+<!--                    <form class="form-inline" method="GET" action="/api/auth/signup">-->
+<!--                        <button type="submit" class="btn btn-danger" >Register</button>-->
+<!--                    </form>-->
                 </li>
+                &nbsp;&nbsp;
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Log-in</a>
+                    <a class="nav-link" href="/login"><button type="submit" class="btn btn-danger" >Login</button></a>
+<!--                    <form class="form-" method="POST" action="/login">-->
+<!--                    <button type="submit" class="btn btn-danger" >Login</button>-->
+<!--                </form>-->
+
                 </li>
             </ul>
         </div>
