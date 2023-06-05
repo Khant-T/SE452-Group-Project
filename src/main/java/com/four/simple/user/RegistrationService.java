@@ -33,6 +33,8 @@ public class RegistrationService {
         return modelAndView;
     }
 
+
+
     @PostMapping("/signup")
     @Operation(summary = "Create User & It's Roles")
     public String registerUser(SingupRequest singupRequest){
@@ -76,6 +78,6 @@ public class RegistrationService {
 
         userRepository.save(user);
 
-        return "You have successfully registered now!";
+        return "Hi User! You have successfully register with us!";
     }
 }
