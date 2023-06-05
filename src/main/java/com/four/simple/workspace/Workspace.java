@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.four.simple.checklist.Checklist;
 
+import com.four.simple.nosql.Members;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
